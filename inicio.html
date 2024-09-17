@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="assets/CSS/bootstrap.min.css">
+  <title>INICIO</title>
+</head>
+<style>
+  .profile-photo{
+width: 70px;
+height: 70px;
+border-radius: 50%;
+border: 2px solid white;
+  }
+  img:hover{
+  transition: 2s all ease;
+  transform: scale(1.2) 
+}
+a:hover{
+  transition: 2s all ease;
+  transform: scale(1.2) ;
+}
+</style>
+<body onload="cargarNombre()">
+  <nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
+    <div class="container-fluid text-center">
+      <a href="perfil.html" class="text-decoration-none">
+        <img src="assets/img_profile/icono3.jpeg" alt="" id="foto_perfil" class="profile-photo">
+      </a>
+      <h1> <h2  class="text-white mx-3" id="user"></h2></h1>
+   
+
+    <span class="navbar-text">
+       
+   <button class="btn btn.bg-primary-subtle"><i class="bi bi-person-circle"></i></button>
+      <button class="btn btn-danger" id="btnSalir">SALIR</button>
+    </span>
+    </div>
+  </nav><br>
+
+
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+
+      
+
+      <a class="navbar-brand" href="Productos.html">Productos <br> <img src="compra.png" class="profile-photo" alt=""></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+
+    
+        
+      </div>
+    </div>
+  </nav>
+
+
+ 
+<script src="assets/js/sweetalert2.all.min (1).js"></script>
+<script src="assets/js/inicio.js"></script>
+</body>
+</html>

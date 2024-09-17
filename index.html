@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="es" data-bs-theme="dark"> 
+<head> 
+  <meta charset="UTF-8"> 
+  <title>Login</title> 
+ <link rel="stylesheet" href=".//assets/CSS/bootstrap.min.css">
+</head> 
+<body > 
+  <style>
+    .button-29 {
+      align-items: center;
+      appearance: none;
+      background-image: radial-gradient(100% 100% at 100% 0, #5adaff 0, #5468ff 100%);
+      border: 0;
+      border-radius: 6px;
+      box-shadow: rgba(45, 35, 66, .4) 0 2px 4px, rgba(45, 35, 66, .3) 0 7px 13px -3px, rgba(58, 65, 111, .5) 0 -3px 0 inset;
+      box-sizing: border-box;
+      color: #fff;
+      cursor: pointer;
+      display: inline-flex;
+      font-family: "JetBrains Mono", monospace;
+      height: 48px;
+      justify-content: center;
+      line-height: 1;
+      list-style: none;
+      overflow: hidden;
+      padding-left: 16px;
+      padding-right: 16px;
+      position: relative;
+      text-align: left;
+      text-decoration: none;
+      transition: box-shadow .15s, transform .15s;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+      white-space: nowrap;
+      will-change: box-shadow, transform;
+      font-size: 18px;
+    }
+  
+    .button-29:focus {
+      box-shadow: #3c4fe0 0 0 0 1.5px inset, rgba(45, 35, 66, .4) 0 2px 4px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+    }
+  
+    .button-29:hover {
+      box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+      transform: translateY(-2px);
+    }
+  
+    .button-29:active {
+      box-shadow: #3c4fe0 0 3px 7px inset;
+      transform: translateY(2px);
+      
+    }</style>
+  <section> 
+    <div class="signin"> 
+      <div class="content"> 
+<center>
+        <img src="php/img_profile/_dbcb6fcc-8b45-4386-881d-6312a9f95679.jpeg" alt="Logo" width="100" height="100" class="d-inline-block align-text-top">
+         
+        <h2>Iniciar sesion</h2> 
+        <div class="form"> 
+          <div class="inputBox"> 
+           <h1>correo</h1> <input type="text" class="form-control w-25" id="email" required> 
+            
+          </div> <br>
+          <div class="inputBox"> 
+            <h1>  Contraseña</h1>
+            <input type="password" class="form-control w-25" id="pass" maxlength="17" required> 
+          
+          </div> <br>
+          <div class="links"> 
+            <input type="button" class="btn btn-light button-29 form-control w-25" id="enviar" value="Iniciar sesion" onclick="login()">   </div> <br>
+          <a href="registrar.html"><input type="button" class="btn btn-light form-control w-25" value="Crear"></a> <br><br>
+        </center>
+        </div> 
+      </div> 
+    </div>
+  </section>
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/sweetalert2.all.min (1).js"></script>
+  <script src="assets/js/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="assets/CSS/bootstrap.min.css">
+  <title>Document</title>
+  <style>
+    .profile-photo {
+      width: auto;
+      height: auto;
+      border-radius: 50%;
+      border: 2px solid white;
+    }
+
+    .foto-perfil {
+      height: 100px;
+    }
+
+    h4 {
+      color: blue;
+    }
+  </style>
+</head>
+
+<body onload="cargarNombre(); cargarPerfil()">
+  <nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
+    <div class="container-fluid text-center">
+
+      <h2 class=" mx-3" id="user">Hola</h2>
+      <span class="navbar-text">
+        <a href="inicio.html" class="text-decoration-none">
+          <button class="btn btn-light">inicio</button>
+        </a>
+        <button class="btn btn.bg-primary-subtle"></button>
+        <button class="btn btn-dark" id="btnSalir">SALIR</button>
+      </span>
+    </div>
+  </nav><br>
+  <div class="container-fluid">
+    <div class="card text-center">
+      <div class="card-header">
+        <h1>Editar</h1>
+      </div><br>
+      <div id="foto-preview">
+        <img src="ffd4600a6f435ae3fd5cb7550076ee3a" alt="" class="foto-perfil">
+      </div>
+
+      <center>
+        <form action="" class="w-50 m-auto" enctype="multipart/form-data" id="formPerfil">
+          <div id="container">
+
+
+            <h5>Usuario:</h5>
+
+            <h4 id="email" class="text-center"></h4>
+
+
+
+            <h5>Nombre:</h5>
+
+            <input type="text" name="nombre" id="nombre" class="form-control w-25" placeholder="Nombre" required>
+
+
+
+            <h5>Apellido:</h5>
+
+            <input type="text" name="ap" id="ap" class="form-control w-25" placeholder="Apellido" required>
+
+
+            <h5>Foto:</h5>
+
+            <input type="file" name="foto" id="foto" class="form-control w-25" accept="image/*">
+          </div><br>
+          <output id="list"></output>
+          <style>
+            .thumb {
+              height: 300px;
+              border: 1px solid #fa0000;
+              margin: 10px 5px 0 0;
+            }
+          </style>
+
+
+
+
+
+
+
+          <script>
+
+            function archivo(evt) {
+              var files = evt.target.files; // FileList object
+
+              // Obtenemos la imagen del campo "file".
+              for (var i = 0, f; f = files[i]; i++) {
+                //Solo admitimos imágenes.
+                if (!f.type.match('image.*')) {
+                  continue;
+                }
+
+                var reader = new FileReader();
+
+                reader.onload = (function (theFile) {
+                  return function (e) {
+                    // Insertamos la imagen
+                    document.getElementById("list").innerHTML = ['<img class="thumb" src="', e.target.result, '" title="', escape(theFile.name), '"/>'].join('');
+                  };
+                })(f);
+
+                reader.readAsDataURL(f);
+
+
+              }
+            }
+
+            document.getElementById('foto').addEventListener('change', archivo, false);
+          </script>
+
+          <button type="button" id="btnGuardar" class="btn btn-light form-control w-25"
+            onclick="guardarPerfil(),recargar();" value="Recargar">Guardar</button>
+    </div>
+    </form>
+    <div class="card-footer text-body-secondary">
+
+    </div>
+  </div>
+  </div>
+  <script src="assets/js/sweetalert2.all.min (1).js"></script>
+  <script src="assets/js/inicio.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="assets/CSS/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+   <!-- DataTable -->
+   <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css" />
+   <!-- Font Awesome -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+     integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+     crossorigin="anonymous" referrerpolicy="no-referrer" />
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+ 
+  <title>INICIO</title>
+</head>
+<style>
+  .profile-photo {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 2px solid white;
+  }
+  img:hover{
+  transition: 2s all ease;
+  transform: scale(1.2) 
+}
+a:hover{
+  transition: 2s all ease;
+  transform: scale(1.2) ;
+}
+</style>
+
+<body onload="cargarNombre(),inicio()">
+  <nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
+    <div class="container-fluid text-center">
+      <a href="perfil.html" class="text-decoration-none">
+        <img alt="" id="foto_perfil" class="profile-photo">
+      </a>
+      <h1>
+        <h2 class="text-white mx-3" id="user"></h2>
+      </h1>
+
+
+      <span class="navbar-text">
+
+        <button class="btn btn.bg-primary-subtle"><i class="bi bi-person-circle"></i></button>
+        <button class="btn btn-danger" id="btnSalir">SALIR</button>
+      </span>
+    </div>
+  </nav><br>
+
+
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+
+     
+      <a class="navbar-brand" href="Productos.html">productos <br> <img src="compra.png" class="profile-photo" alt=""></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <a class="navbar-brand" href="Productos.html">productos <br> <img src="cineP.png" class="profile-photo" alt=""></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <a class="navbar-brand" href="Productos.html">productos <br> <img src="compra.png" class="profile-photo" alt=""></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <a class="navbar-brand" href="Productos.html">productos <br> <img src="compra.png" class="profile-photo" alt=""></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+    </div>
+    </div>
+  </nav>
+
+
+  <div class="container-fluid">
+
+    <div class="card text-center w-50 m-auto mt-3 shadow bg-body-tertiary" id="divPresupuesto">
+      <h3 class="mt-2 roboto-thin ">Presupuesto inicial</h3>
+      <input type="number" class="form-control w-75 m-auto " value="0" min="0" max="1000000" id="presupuesto">
+      <button class="btn btn-primary w-25 m-auto my-3 btnR" id="btnPresupuesto">Iniciar</button>
+  </div>
+
+
+    <div class="d-none" id="divGastos">
+
+        <div class="d-none">
+
+
+
+
+            <h2 class="mt-2 roboto-black-italic">Gastos</h2>
+
+            <div class="row">
+                <div class="col m-2">
+                    <div class="align-middle" id="progress">
+
+                        <circle-progress value="0" min="0" max="1000000" textFormat="percent" style="border: #fff;"></circle-progress>
+                    </div>
+                    
+                </div>
+                <div class="col m-2">
+
+                    
+                    <p class="roboto-thin"><span>Presupuesto:</span><b id="totalPresupuesto">$0.0</b></p>
+                    <p class="roboto-thin"><span>Disponible:</span><b id="totalDisponible">$0.0</b></p>
+                    <p class="roboto-thin"><span>Gastado:</span><b id="totalGastos">$0.0</b></p>
+                    
+                    <button class="btn btnGG " onclick="reset()"> <i class="bi bi-x-circle"></i></button>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="card text-center w-50 m-auto mt-3 shadow bg-body-tertiary">
+            <h3 class="mt-2 roboto-black-italic" >filtrar oriductos</h3>
+            <select name="categorias"  class="form-control m-75 m-auto text-center" id="filtrarcategoria">
+              
+            </select>
+        </div>
+
+
+        <div class=" card text-center w-50 m-auto mt-3 shadow p-2" >
+            <h2 class="mt-2">Productos en venta</h2>
+            <button type="button" class="btn button-29" data-bs-toggle="modal" data-bs-target="#nuevoGasto"><i class="bi bi-database-add"></i>
+            </button>
+            <div class="text-center" id="listaGastos">
+                <small>No hay gastos</small>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="modal fade" id="nuevoGasto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5 roboto-black-italic" id="exampleModalLabel">NUEVO GASTO</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="roboto-thin"><label for="">Descripción:</label></p>
+                <input type="text" class="form-control" id="descripcion">
+                <p class="roboto-thin"><label for="">Costo:</label></p>
+                <input type="number" class="form-control" id="costo">
+                <p class="roboto-thin"><label for="">Categoria:</label></p>
+                <select name="categorias"   class="form-control m-75 m-auto text-center" id="categoria">
+               
+                </select>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-outline-primary" onclick="guardarGasto()">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="editarGasto" tabindex="-1" aria-labelledby="editarGasto" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5 roboto-black-italic" id="exampleModalLabel">EDITAR GASTO</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="roboto-thin"><label for="">Descripción:</label></p>
+                <input type="text" class="form-control" id="edescripcion">
+                <p class="roboto-thin"><label for="">Costo:</label></p>
+                <input type="number" class="form-control" id="ecosto">
+                <p class="roboto-thin"><label for="">Categoria:</label></p>
+                <select name="categorias"   class="form-control m-75 m-auto text-center" id="ecategoria">
+              
+                </select>
+                <input type="hidden" id="eindex">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-outline-primary" onclick="actualizarGasto()">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+/////////////////////////////////////////////////////////////////////////////////
+var tPresupuesto = parseInt(localStorage.getItem("presupuesto")); 
+var gastos = JSON.parse(localStorage.getItem("gastos")) || [];
+var divPresupuesto = document.querySelector("#divPresupuesto");
+var presupuesto = document.querySelector("#presupuesto");
+var btnPresupuesto = document.querySelector("#btnPresupuesto");
+var actalualizarGasto = document.querySelector("#actualizar");
+var divGastos = document.querySelector("#divGastos");
+var progress = document.querySelector("#progress");
+var tGastos = 0;
+var disponible = 0;
+
+async function cargarCategorias() {
+    try {
+        const dato = new FormData();
+        dato.append("action", "loadCategorias");
+
+        let respuesta = await fetch("categoria.php", { method: 'POST', body: dato });
+       
+        
+        let categorias = await respuesta.json();
+        
+        
+        let selectCate = document.getElementById('filtrarcategoria');
+        let selectEditCate = document.getElementById('ecategoria');
+        let selectAddCate = document.getElementById('categoria');
+
+
+        
+        
+        selectCate.innerHTML = '<option value="todos">todos</option>';
+        selectEditCate.innerHTML = '';
+        selectAddCate.innerHTML = '';
+
+        
+        categorias.nombre.forEach(categoria => {
+            let option = document.createElement('option');
+            option.value = categoria;
+            option.textContent = categoria;
+            
+            selectCate.appendChild(option.cloneNode(true));
+            selectEditCate.appendChild(option.cloneNode(true));
+            selectAddCate.appendChild(option);
+        });
+    } catch (error) {
+        console.error('Error al cargar las categorías:', error);
+    }
+}
+ cargarCategorias();
+
+const inicio = () => {
+    tPresupuesto = parseInt(localStorage.getItem("presupuesto"));
+    if (tPresupuesto > 0) {
+        divPresupuesto.classList.remove("d-block");
+        divGastos.classList.remove("d-none");
+        divPresupuesto.classList.add("d-none");
+        divGastos.classList.add("d-block");
+        totalPresupuesto.innerHTML =` $ ${tPresupuesto.toFixed(2)}`;
+        mostrarGastos();
+    } else {
+        divPresupuesto.classList.remove("d-none");
+        divGastos.classList.remove("d-block");
+        divPresupuesto.classList.add("d-block");
+        divGastos.classList.add("d-none");
+        presupuesto.value = 0;
+    }
+    pintarDatos();
+}
+
+btnPresupuesto.onclick = () => {
+    tPresupuesto = parseInt(presupuesto.value);
+    if (tPresupuesto == 0 || tPresupuesto < 0 || isNaN(tPresupuesto)) {
+        Swal.fire({ icon: "error", title: "ERROR", text: "Presupuesto mayor a 0" });
+        return;
+    }
+    localStorage.setItem('presupuesto', tPresupuesto);
+
+    divPresupuesto.classList.remove("d-block");
+    divGastos.classList.remove("d-none");
+    divPresupuesto.classList.add("d-none");
+    divGastos.classList.add("d-block");
+
+    totalPresupuesto.innerHTML = `$${tPresupuesto.toFixed(2)}`;
+    mostrarGastos();
+
+}
+
+const guardarGasto = async () => {
+    gastos = JSON.parse(localStorage.getItem("gastos")) || [];
+    let descripcion = document.getElementById("descripcion").value;
+    let costo = parseInt(document.getElementById("costo").value);
+    let categoria = document.getElementById("categoria").value;
+
+    if (descripcion.trim() === "" || isNaN(costo) || costo <= 0) {
+        Swal.fire({ icon: "error", title: "ERROR", text: "mal" });
+        return;
+    }
+
+    
+
+    let datos = new FormData();
+    datos.append("descripcion", descripcion);
+    datos.append("costo", costo);
+    datos.append("categoria", categoria);
+    datos.append("action", "guardarGasto");
+
+    let respuesta = await fetch("1php.php", { method: 'POST', body: datos });
+    let json = await respuesta.json();
+
+
+
+    if (json.success == true) {
+
+        const gasto = { descripcion, costo, categoria };
+        gastos.push(gasto);
+        localStorage.setItem("gastos", JSON.stringify(gastos));
+
+        Swal.fire({ icon: "success", title: "add", text: "agregado"});
+        bootstrap.Modal.getInstance(document.getElementById("nuevoGasto")).hide();
+
+        document.getElementById("descripcion").value = "";
+        document.getElementById("costo").value = "";
+        document.getElementById("categoria").selectedIndex = 0;
+    } else {
+        Swal.fire({ icon: "error", title: "UPSI", text: "ahc" });
+    }
+
+    mostrarGastos();
+}
+
+document.getElementById("filtrarcategoria").addEventListener("change", (event) => {
+    const categoriaSeleccionada = event.target.value;
+    mostrarGastos(categoriaSeleccionada);
+});
+
+const mostrarGastos = async (categoria = "todos") => {
+    try {
+        const datos2 = new FormData();
+        datos2.append("action", "selectGastos");
+        let respuesta = await fetch("1php.php", { method: 'POST', body: datos2 });
+        let json = await respuesta.json();
+
+        gastos = JSON.parse(localStorage.getItem("gastos")) || [];
+        let gastosHTML = ``;
+
+        if (json.data.length === 0) {
+            document.getElementById('listaGastos').innerHTML =`<b>No hay gastos</b>`;
+            tGastos = 0;
+            pintarDatos();
+            return;
+        }
+
+        index = 0;
+        tGastos = 0;
+
+        json.data.forEach(gasto => {
+            if (categoria === gasto[3] || categoria === "todos") {
+                gastosHTML += `
+                    <div class="card text-center w-100 m-auto mt-3 p-2">
+            <div class="row">
+            <div class="col"><img src="img/${gasto[3]}.png" class="imgCategoria" width="200px" height="200px"></div>
+            <div class="col text-start">
+            <p><b>Descripcion:</b> <small>${gasto[1]}</small></p>            
+            <p><b>Costo:</b> <small>$${parseFloat(gasto[2]).toFixed(2)}</small></p>
+            </div>
+            <div class="col">
+            <button class="btn btn-outline-primary" onclick="mostrarg2(${gasto[0]})" data-bs-toggle="modal" data-bs-target="#editarGasto">editar</button><br><br>
+            <button class="btn btn-outline-danger" onclick="deletegasto(${gasto[0]})"><i class="bi bi-trash"></i></button>
+</div>
+            </div>
+    </div> `
+                tGastos += parseFloat(gasto[2]);
+            }
+        });
+
+        document.getElementById("listaGastos").innerHTML = gastosHTML;
+        pintarDatos();
+    } catch (ex) {
+        alert(ex);
+    }
+};
+
+const pintarDatos = async () => {
+    var totalPresupuesto = document.querySelector("#totalPresupuesto");
+    var totalDisponible = document.querySelector("#totalDisponible");
+    var totalGastos = document.querySelector("#totalGastos");
+    var tPresupuesto = parseFloat(localStorage.getItem("presupuesto")) || 0;
+    disponible = tPresupuesto - tGastos;
+
+    let porcentaje = 100 - ((tGastos / tPresupuesto) * 100);
+    porcentaje = Math.max(porcentaje, 0);
+ progress.innerHTML = `<circle-progress value="${porcentaje}" min="0" max="100" text-format="percent"></circle-progress>`
+    if (progress) {
+        progress.setAttribute('value', porcentaje);
+    }
+    totalGastos.innerHTML = `$${tGastos.toFixed(2)}`;
+    totalPresupuesto.innerHTML = `$${tPresupuesto.toFixed(2)}`;
+    totalDisponible.innerHTML = `$${disponible.toFixed(2)}`;
+};
+
+const mostrarg2 = async (id) => {
+
+    let datos = new FormData();
+    datos.append("id", id);
+    datos.append('action', 'select');
+
+    let respuesta = await fetch("1php.php", { method: 'POST', body: datos });
+    let json = await respuesta.json();
+
+    document.getElementById("edescripcion").value = json.descripcion;
+    document.getElementById("ecosto").value = json.costo;
+    document.getElementById("ecategoria").value = json.categoria;
+    document.getElementById("eindex").value = json.id;
+}
+
+
+const actualizarGasto= async () => {
+    gastos = JSON.parse(localStorage.getItem("gastos")) || [];
+
+    let descripcion = document.getElementById("edescripcion").value;
+    let costo = parseFloat(document.getElementById("ecosto").value);
+    let categoria = document.getElementById("ecategoria").value;
+    let id = parseInt(document.getElementById("eindex").value);
+
+    if (descripcion.trim() === "" || isNaN(costo) || costo <= 0) {
+        Swal.fire({ icon: "error", title: "ERROR", text: "Mal" });
+        return;
+    }
+
+    let costoAnterior = parseFloat(gastos[index].costo);
+
+
+    let datos = new FormData();
+    datos.append("id", id);
+    datos.append("descripcion", descripcion);
+    datos.append("costo", costo);
+    datos.append("categoria", categoria);
+    datos.append('action', 'updateGasto');
+
+
+    let respuesta = await fetch("1php.php", { method: 'POST', body: datos });
+    let json = await respuesta.json();
+
+    if (json.success == true) {
+        Swal.fire({ title: "actualizado", text: "", icon: "success" });
+    } else {
+        Swal.fire({
+            title: "error", text: "", icon: "error"
+        });
+    }
+
+    Swal.fire({ title: "actualizado", text: "", icon: "success" });
+    bootstrap.Modal.getInstance(document.getElementById("editarGasto")).hide();
+    mostrarGastos();
+}
+
+
+const deletegasto = async (index) => {
+    Swal.fire({
+        title: " Esta seguro de Eliminar?",
+        showDenyButton: true,
+        showCancelButton: false,
+        confirmButtonText: "SI",
+        denyButtonText: `NO`,
+        cancelButtonColor: "#dc3545",
+        confirmButtonColor: "#198754",
+        denyButtonColor: "#dc3545",
+
+    }).then(async (result) => {
+
+        if (result.isConfirmed) {
+            let gastoid = new FormData();
+            gastoid.append('id', index);
+            gastoid.append('action', 'delete');
+
+            let respuesta = await fetch("1php.php", { method: 'POST', body: gastoid });
+            let json = await respuesta.json();
+
+            if (json.success == true) {
+                Swal.fire("DEL", "", "success");
+            } else {
+                Swal.fire({
+                    title: "ERROR", text:"", icon: "error"
+                });
+            }
+            Swal.fire("eliminado", "", "success");
+            mostrarGastos();
+            pintarDatos();
+
+        }
+    });
+}
+
+
+
+const reset = () => {
+    Swal.fire({
+        title: "quieres salir?",
+        showDenyButton: true,
+        showCancelButton: false,
+        confirmButtonText: "SI",
+        denyButtonText: `NO`,
+        cancelButtonColor: "#dc3545",
+        confirmButtonColor: "#198754",
+        denyButtonColor: "#dc3545",
+    }).then(async(result) => {
+        if(result.isConfirmed){
+            localStorage.clear();
+            inicio();
+
+            let gastoid = new FormData();
+           
+            gastoid.append('action', 'delete1');
+
+            let respuesta = await fetch('1php.php', { method: 'POST', body: gastoid });
+            let json = await respuesta.json();
+
+            if (json.success == true) {
+                Swal.fire("DEL", "", "success");
+            } else {
+                Swal.fire({
+                    title: "ERROR", text: json.mensaje, icon: "error"
+                });
+            }
+          
+            mostrarGastos();
+            pintarDatos();
+
+
+        }
+       
+    });
+            
+   
+        
+}
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  <br><br><br><br><br>
+  <style>
+    .button-29 {
+      align-items: center;
+      appearance: none;
+      background-image: radial-gradient(100% 100% at 100% 0, #5adaff 0, #5468ff 100%);
+      border: 0;
+      border-radius: 6px;
+      box-shadow: rgba(45, 35, 66, .4) 0 2px 4px, rgba(45, 35, 66, .3) 0 7px 13px -3px, rgba(58, 65, 111, .5) 0 -3px 0 inset;
+      box-sizing: border-box;
+      color: #fff;
+      cursor: pointer;
+      display: inline-flex;
+      font-family: "JetBrains Mono", monospace;
+      height: 48px;
+      justify-content: center;
+      line-height: 1;
+      list-style: none;
+      overflow: hidden;
+      padding-left: 16px;
+      padding-right: 16px;
+      position: relative;
+      text-align: left;
+      text-decoration: none;
+      transition: box-shadow .15s, transform .15s;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+      white-space: nowrap;
+      will-change: box-shadow, transform;
+      font-size: 18px;
+    }
+
+    .button-29:focus {
+      box-shadow: #3c4fe0 0 0 0 1.5px inset, rgba(45, 35, 66, .4) 0 2px 4px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+    }
+
+    .button-29:hover {
+      box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+      transform: translateY(-2px);
+    }
+
+    .button-29:active {
+      box-shadow: #3c4fe0 0 3px 7px inset;
+      transform: translateY(2px);
+    }
+  </style>
+
+ 
+
+
+  <script src="assets/js/sweetalert2.all.min (1).js"></script>
+  <script src="assets/js/inicio.js"></script>
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
